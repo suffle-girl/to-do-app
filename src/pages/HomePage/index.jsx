@@ -1,11 +1,10 @@
-import { Layout } from "../../Layout";
-import { Outlet } from "react-router-dom";
 import "./style.css";
+import { List } from "../../List";
 
 export const HomePage = () => {
   return (
     <>
-      <h1>Hello hello</h1>
+      <List />
     </>
   );
 };
