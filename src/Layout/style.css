@@ -1,0 +1,21 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100svh;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.layout__navbar {
+  width: 100%;
+}
+
+.layout__content {
+  flex: 1 0 auto;
+  padding: 0 10px;
+}
+
+.layout__footer {
+  font-style: italic;
+}
