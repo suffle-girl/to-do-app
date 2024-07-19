@@ -1,6 +1,38 @@
+import { useState } from "react";
 import "./style.css";
 
 export const ListForm = () => {
+  const [taskName, setTaskName] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState(false);
+  const [priority, setPriority] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [tag, setTag] = useState("");
+
+  const handleTaskName = (event) => {
+    setTaskName(event.target.value);
+  };
+
+  const handleDescription = (event) => {
+    setDescription(event.target.value);
+  };
+
+  const handleStatus = () => {
+    setStatus(!status);
+  };
+
+  const handlePriority = (event) => {
+    setPriority(event.target.value);
+  };
+
+  const handleDueDate = (event) => {
+    setDueDate(event.target.value);
+  };
+
+  const handleTag = (event) => {
+    setTag(event.target.value);
+  };
+
   return (
     <div className="container--list-form">
       <form className="list-form" action="">
@@ -8,54 +40,62 @@ export const ListForm = () => {
           <li className="list-form--item">
             <label htmlFor="">
               Task:
-              <input type="text" name="" id="" />
+              <input onChange={handleTaskName} type="text" name="" id="" />
+              {console.log(taskName)}
             </label>
           </li>
 
           <li className="list-form--item">
             <label htmlFor="">
               Description:
-              <input type="text" />
+              <input onChange={handleDescription} type="text" />
+              {console.log(description)}
             </label>
           </li>
 
           <li className="list-form--item">
             <label htmlFor="">
               Done:
-              <input type="checkbox" name="" id="" />
+              <input onChange={handleStatus} type="checkbox" name="" id="" />
+              {console.log(status)}
             </label>
           </li>
 
           <li className="list-form--item">
             <label htmlFor="">
               Priority:
-              <select name="" id="">
-                <option value="">Top</option>
-                <option value="">Medium</option>
-                <option value="">Low</option>
+              <select
+                onChange={handlePriority}
+                defaultValue={"medium"}
+                name=""
+                id=""
+              >
+                <option value="top">Top</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
               </select>
+              {console.log(priority)}
             </label>
           </li>
 
           <li className="list-form--item">
             <label htmlFor="">
               Due Date:
-              <input type="date" name="" id="" />
+              <input onChange={handleDueDate} type="date" name="" id="" />
+              {console.log(dueDate)}
             </label>
           </li>
 
           <li className="list-form--item">
-            <label htmlFor="">Tags:</label>
-            <select name="" id="" multiple>
-              <option value="">Option 1</option>
-              <option value="">Option 2</option>
-              <option value="">Option 3</option>
-              <option value="">Option 4</option>
-              <option value="">Option 5</option>
+            <label htmlFor="">Select a tag:</label>
+            <select onChange={handleTag} name="" id="">
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+              <option value="option4">Option 4</option>
+              <option value="option5">Option 5</option>
+              {console.log(tag)}
             </select>
-            <p className="list-form--item__help">
-              Press ctrl on Windows or command on Mac for multiple selection.
-            </p>
           </li>
 
           <li className="list-form--item">
