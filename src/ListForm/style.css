@@ -1,0 +1,20 @@
+.list-form--wrapper {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-form--item {
+  margin: 10px;
+}
+
+.list-form--item__help {
+  font-size: small;
+  font-style: italic;
+}
+
+@media screen and (min-width: 1050px) {
+  .list-form--wrapper {
+    flex-direction: row;
+  }
+}
