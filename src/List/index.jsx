@@ -3,18 +3,25 @@ import "./style.css";
 
 export const List = () => {
   const [tasks, setTasks] = useState([]);
+  const apiEndpoint =
+    "https://669a16149ba098ed61fe4298.mockapi.io/todo/api/v1/tasks";
 
   useEffect(() => {
     const fetchTasks = async () => {
-      const response = await fetch(
-        "https://669a16149ba098ed61fe4298.mockapi.io/todo/api/v1/tasks"
-      );
+      const response = await fetch(apiEndpoint);
       const data = await response.json();
 
       setTasks(data);
     };
     fetchTasks();
   }, []);
+
+  const handleDelete = async (id) => {
+    const response = await fetch(`${apiEndpoint}/${id}`, {
+      method: "DELETE",
+    });
+    window.location.reload();
+  };
 
   return (
     <div className="container--list">
@@ -32,6 +39,11 @@ export const List = () => {
               <p>Pritoriy: {task.priority}</p>
               <p>Due Date: {task.dueDate}</p>
             </div>
+            <button type="button">Edit</button>
+            <button onClick={() => handleDelete(task.id)} type="button">
+              Delete
+            </button>
+            <input type="checkbox" />
           </div>
         );
       })}
