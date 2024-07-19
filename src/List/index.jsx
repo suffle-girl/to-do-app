@@ -25,7 +25,7 @@ export const List = () => {
             <div className="list-content__task--header">{task.taskName}</div>
             <div className="list-content__task--desc">
               <p> Description: {task.taskDescription}</p>
-              <p> Tags: {task.tag}</p>
+              <p> Category: {task.tag}</p>
             </div>
             <div className="list-content__task--status">
               <p>Status: {task.done === true ? "DONE" : "TO DO"}</p>

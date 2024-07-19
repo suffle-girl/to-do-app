@@ -8,7 +8,7 @@ export const ListForm = () => {
   const [priority, setPriority] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [tag, setTag] = useState("");
-  const [task, setTask] = useState({});
+  const [hint, setHint] = useState("");
 
   const handleTaskName = (event) => {
     setTaskName(event.target.value);
@@ -34,7 +34,15 @@ export const ListForm = () => {
     setTag(event.target.value);
   };
 
-  const postData = async () => {
+  const handleNewData = async (event) => {
+    if (taskName === "" || description === "") {
+      event.preventDefault();
+      setHint(
+        "Fill in the task name and the task description. The fields cannot be empty."
+      );
+      return;
+    }
+
     const response = await fetch(
       "https://669a16149ba098ed61fe4298.mockapi.io/todo/api/v1/tasks",
       {
@@ -92,9 +100,9 @@ export const ListForm = () => {
                 name=""
                 id=""
               >
-                <option value="top">Top</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="Top">Top</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
               {console.log(priority)}
             </label>
@@ -111,22 +119,23 @@ export const ListForm = () => {
           <li className="list-form--item">
             <label htmlFor="">Select a tag:</label>
             <select onChange={handleTag} name="" id="">
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-              <option value="option4">Option 4</option>
-              <option value="option5">Option 5</option>
+              <option value="Work">Work</option>
+              <option value="School">School</option>
+              <option value="Home">Home</option>
+              <option value="Self-care">Self-care</option>
+              <option value="Sport">Sport</option>
               {console.log(tag)}
             </select>
           </li>
 
           <li className="list-form--item">
-            <button onClick={postData} type="button">
+            <button onClick={handleNewData} type="button">
               Add to the list
             </button>
           </li>
         </ul>
       </form>
+      <div className="list-form--hint">{hint}</div>
     </div>
   );
 };
