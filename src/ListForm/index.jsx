@@ -126,80 +126,77 @@ export const ListForm = () => {
           <li className="list-form--item">
             <label htmlFor="taskName">
               Task name:
-              <input
-                onChange={handleTaskName}
-                type="text"
-                name="taskName"
-                id="taskName"
-                defaultValue={
-                  editedTask !== null ? `${editedTask.taskName}` : `${taskName}`
-                }
-              />
               {console.log(taskName)}
             </label>
+            <input
+              onChange={handleTaskName}
+              type="text"
+              name="taskName"
+              id="taskName"
+              defaultValue={
+                editedTask !== null ? `${editedTask.taskName}` : `${taskName}`
+              }
+            />
           </li>
 
           <li className="list-form--item">
-            <label htmlFor="">
+            <label htmlFor="description">
               Description:
-              <input
-                onChange={handleDescription}
-                type="text"
-                id="description"
-                defaultValue={
-                  editedTask !== null
-                    ? `${editedTask.taskDescription} `
-                    : `${description}`
-                }
-              />
               {console.log(description)}
             </label>
+            <input
+              onChange={handleDescription}
+              type="text"
+              name="description"
+              id="description"
+              defaultValue={
+                editedTask !== null
+                  ? `${editedTask.taskDescription} `
+                  : `${description}`
+              }
+            />
           </li>
 
           <li className="list-form--item">
-            <label htmlFor="priority-select">
-              Priority:
-              <select
-                onChange={handlePriority}
-                name="priority"
-                id="priority-select"
-                defaultValue={
-                  editedTask !== null
-                    ? `${editedTask.priority} `
-                    : `${priority}`
-                }
-              >
-                <option value="Top">Top</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
-              </select>
-              {console.log(priority)}
-            </label>
+            <label htmlFor="prioritySelect">Priority:</label>
+            <select
+              onChange={handlePriority}
+              name="prioritySelect"
+              id="prioritySelect"
+              defaultValue={
+                editedTask !== null ? `${editedTask.priority} ` : `${priority}`
+              }
+            >
+              <option value="Top">Top</option>
+              <option value="Medium">Medium</option>
+              <option value="Low">Low</option>
+            </select>
+            {console.log(priority)}
           </li>
 
           <li className="list-form--item">
-            <label htmlFor="">
+            <label htmlFor="dueDate">
               Due Date:
-              <input
-                onChange={handleDueDate}
-                type="date"
-                name=""
-                id="dueDate"
-                // defaultValue={
-                //   editedTask !== null
-                //     ? `${parseDate(editedTask.dueDate)} `
-                //     : `${dueDate}`
-                // }
-              />
               {console.log(dueDate)}
             </label>
+            <input
+              onChange={handleDueDate}
+              type="date"
+              name="dueDate"
+              id="dueDate"
+              // defaultValue={
+              //   editedTask !== null
+              //     ? `${parseDate(editedTask.dueDate)} `
+              //     : `${dueDate}`
+              // }
+            />
           </li>
 
           <li className="list-form--item">
-            <label htmlFor="">Select a tag:</label>
+            <label htmlFor="tag">Select a tag:</label>
             <select
               onChange={handleTag}
-              name=""
+              name="tag"
               id="tag"
               // defaultValue={
               //   editedTask !== null ? `${editedTask.tag} ` : `${tag}`
@@ -216,13 +213,21 @@ export const ListForm = () => {
 
           {editedTask !== null ? (
             <li className="list-form--item">
-              <button onClick={() => handleUpdate(editedTask.id)} type="button">
+              <button
+                onClick={() => handleUpdate(editedTask.id)}
+                className="list-form--update-button list-form--button"
+                type="button"
+              >
                 Update item
               </button>
             </li>
           ) : (
             <li className="list-form--item">
-              <button onClick={handleNewData} type="button">
+              <button
+                onClick={handleNewData}
+                className="list-form--add-button list-form--button"
+                type="button"
+              >
                 Add to the list
               </button>
             </li>

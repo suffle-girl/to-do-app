@@ -2,10 +2,20 @@
   list-style: none;
   display: flex;
   flex-direction: column;
+  padding: 0;
 }
 
 .list-form--item {
   margin: 10px;
+}
+
+input,
+label,
+select {
+  display: flex;
+  flex-direction: column;
+  width: 65vw;
+  margin: 0 auto;
 }
 
 .list-form--item__help {
@@ -13,8 +23,57 @@
   font-style: italic;
 }
 
-@media screen and (min-width: 1050px) {
+.list-form--button {
+  padding: 15px;
+  border-radius: 5px;
+  font-size: medium;
+}
+
+.list-form--add-button {
+  background-color: darkseagreen;
+  border: 1px solid darkgrey;
+}
+
+.list-form--update-button {
+  background-color: darkcyan;
+  border: 1px solid gray;
+  color: white;
+}
+
+.list-form--hint {
+  padding: 0 20px;
+  font-style: oblique;
+  font-size: 0.7rem;
+  color: darkred;
+}
+
+@media screen and (min-width: 320px) {
+  input,
+  label,
+  select {
+    width: 50vw;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  input,
+  label,
+  select {
+    width: 40vw;
+  }
+}
+
+@media screen and (min-width: 938px) {
+  input,
+  label,
+  select {
+    width: unset;
+  }
+
   .list-form--wrapper {
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
   }
 }
