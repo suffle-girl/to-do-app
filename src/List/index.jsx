@@ -30,28 +30,53 @@ export const List = ({ onEdit, onDone, onReopen }) => {
       {tasks.map((task) => {
         return (
           <div className="list--content__task" key={task.id}>
-            <div className="list-content__task--header">{task.taskName}</div>
-            <div className="list-content__task--desc">
-              <p> Description: {task.taskDescription}</p>
-              <p> Category: {task.tag}</p>
+            <div className="list-content__task-decr">
+              <h4 className="list--content__task--item list-content__task--header">
+                {task.taskName}
+              </h4>
+              <div className="list--content__task--item list-content__task--desc">
+                <p> 💬: {task.taskDescription}</p>
+                <p> ❓: {task.tag}</p>
+              </div>
+              <div className="list--content__task--item list-content__task--status">
+                <p>📈: {task.done === true ? "DONE ✅" : "TO DO 🖋️"}</p>
+                <p>🔥: {task.priority}</p>
+                <p>📅: {task.dueDate}</p>
+              </div>
             </div>
-            <div className="list-content__task--status">
-              <p>Status: {task.done === true ? "DONE" : "TO DO"}</p>
-              <p>Pritoriy: {task.priority}</p>
-              <p>Due Date: {task.dueDate}</p>
-            </div>
-            <button onClick={() => onEdit(task.id)} type="button">
-              Edit
-            </button>
-            <button onClick={() => handleDelete(task.id)} type="button">
-              Delete
-            </button>
 
-            {task.done ? (
-              <button onClick={() => onReopen(task.id)}>✅</button>
-            ) : (
-              <input onClick={() => onDone(task.id)} type="checkbox" />
-            )}
+            <div className="list--content--handleMenu">
+              <button
+                onClick={() => onEdit(task.id)}
+                className="list--content__task--item list--content__task--item--button"
+                type="button"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDelete(task.id)}
+                className="list--content__task--item list--content__task--item--button"
+                type="button"
+              >
+                Delete
+              </button>
+
+              {task.done ? (
+                <button
+                  onClick={() => onReopen(task.id)}
+                  className="list--content__task--item list--content__task--item--button"
+                >
+                  🖋️ <br /> Reopen
+                </button>
+              ) : (
+                <button
+                  onClick={() => onDone(task.id)}
+                  className="list--content__task--item list--content__task--item--button"
+                >
+                  ✅ <br /> Done
+                </button>
+              )}
+            </div>
           </div>
         );
       })}

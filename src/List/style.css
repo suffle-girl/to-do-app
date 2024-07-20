@@ -1,6 +1,39 @@
+.container--list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .list--content__task {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 1px solid black;
+  border-radius: 5px;
+  text-align: left;
+  padding: 5px;
+}
+
+.list-content__task-decr {
+  display: flex;
+  flex-direction: column;
+}
+
+.list--content--handleMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.list--content__task--item {
+  margin: 0 10px;
+  width: auto;
+}
+
+.list-content__task--header {
+  margin: 15px 10px 0;
+}
+
+.list--content__task--item--button {
+  padding: 20px 10px;
 }
