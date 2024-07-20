@@ -24,6 +24,7 @@ select {
 }
 
 .list-form--button {
+  margin: 20px 0 0;
   padding: 15px;
   border-radius: 5px;
   font-size: medium;

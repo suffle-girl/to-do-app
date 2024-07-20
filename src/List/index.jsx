@@ -31,13 +31,16 @@ export const List = ({ onEdit, onDone, onReopen }) => {
         return (
           <div className="list--content__task" key={task.id}>
             <div className="list-content__task-decr">
-              <h4 className="list--content__task--item list-content__task--header">
-                {task.taskName}
-              </h4>
-              <div className="list--content__task--item list-content__task--desc">
-                <p> 💬: {task.taskDescription}</p>
-                <p> ❓: {task.tag}</p>
+              <div className="list-content__task-decr--part1">
+                <h4 className="list--content__task--item list-content__task--header">
+                  {task.taskName}
+                </h4>
+                <div className="list--content__task--item list-content__task--desc">
+                  <p> 💬: {task.taskDescription}</p>
+                  <p> ❓: {task.tag}</p>
+                </div>
               </div>
+
               <div className="list--content__task--item list-content__task--status">
                 <p>📈: {task.done === true ? "DONE ✅" : "TO DO 🖋️"}</p>
                 <p>🔥: {task.priority}</p>
