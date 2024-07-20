@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import "./style.css";
 
-export const List = () => {
+export const List = ({ onEdit, onChangeStatus, onReopen }) => {
   const [tasks, setTasks] = useState([]);
+
   const apiEndpoint =
     "https://669a16149ba098ed61fe4298.mockapi.io/todo/api/v1/tasks";
 
@@ -17,11 +18,18 @@ export const List = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    const response = await fetch(`${apiEndpoint}/${id}`, {
+    await fetch(`${apiEndpoint}/${id}`, {
       method: "DELETE",
     });
     window.location.reload();
   };
+
+  //   const handleReopen = async (id) => {
+  //     await fetch(`${apiEndpoint}/${id}`, {
+  //         method: "DELETE",
+  //       });
+  //       window.location.reload();
+  //   }
 
   return (
     <div className="container--list">
@@ -39,11 +47,22 @@ export const List = () => {
               <p>Pritoriy: {task.priority}</p>
               <p>Due Date: {task.dueDate}</p>
             </div>
-            <button type="button">Edit</button>
+            <button onClick={() => onEdit(task.id)} type="button">
+              Edit
+            </button>
             <button onClick={() => handleDelete(task.id)} type="button">
               Delete
             </button>
-            <input type="checkbox" />
+
+            {task.done ? (
+              <button onClick={() => onReopen(task.id)}>✅</button>
+            ) : (
+              <input onClick={() => onChangeStatus(task.id)} type="checkbox" />
+            )}
+
+            {/* {task.done ? (
+              <button onClick={() => onChangeStatus(task.id)}>Reopen</button>
+            ) : null} */}
           </div>
         );
       })}

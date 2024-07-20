@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
+import { List } from "../List";
 import "./style.css";
 
 export const ListForm = () => {
   const [taskName, setTaskName] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState(false);
-  const [priority, setPriority] = useState("");
+  const [priority, setPriority] = useState("Medium");
   const [dueDate, setDueDate] = useState("");
-  const [tag, setTag] = useState("");
+  const [tag, setTag] = useState("Work");
+
   const [hint, setHint] = useState("");
+  const [editedTask, setEditedTask] = useState(null);
+
+  const apiEndpoint =
+    "https://669a16149ba098ed61fe4298.mockapi.io/todo/api/v1/tasks";
 
   const handleTaskName = (event) => {
     setTaskName(event.target.value);
@@ -18,8 +24,34 @@ export const ListForm = () => {
     setDescription(event.target.value);
   };
 
-  const handleStatus = () => {
-    setStatus(!status);
+  const handleDone = async (id) => {
+    await fetch(`${apiEndpoint}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        done: !status,
+      }),
+    });
+    window.location.reload();
+  };
+
+  const handleReopen = async (id) => {
+    setStatus(false);
+
+    console.log(status);
+
+    await fetch(`${apiEndpoint}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        done: status,
+      }),
+    });
+    window.location.reload();
   };
 
   const handlePriority = (event) => {
@@ -63,14 +95,54 @@ export const ListForm = () => {
     window.location.reload();
   };
 
+  const handleEdit = async (id) => {
+    const response = await fetch(`${apiEndpoint}/${id}`);
+    const data = await response.json();
+    setEditedTask(data);
+  };
+
+  const parseDate = (date) => {
+    const year = date.slice(0, 4);
+    const month = date.slice(5, 7);
+    const day = date.slice(8, 10);
+
+    return `${year}-${month}-${day}`;
+  };
+
+  const handleUpdate = async (id) => {
+    await fetch(`${apiEndpoint}/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        taskName: taskName,
+        taskDescription: description,
+        done: status,
+        priority: priority,
+        dueDate: dueDate,
+        tag: tag,
+      }),
+    });
+    window.location.reload();
+  };
+
   return (
     <div className="container--list-form">
       <form className="list-form" action="">
         <ul className="list-form--wrapper">
           <li className="list-form--item">
-            <label htmlFor="">
-              Task:
-              <input onChange={handleTaskName} type="text" name="" id="" />
+            <label htmlFor="taskName">
+              Task name:
+              <input
+                onChange={handleTaskName}
+                type="text"
+                name="taskName"
+                id="taskName"
+                defaultValue={
+                  editedTask !== null ? `${editedTask.taskName}` : `${taskName}`
+                }
+              />
               {console.log(taskName)}
             </label>
           </li>
@@ -78,27 +150,32 @@ export const ListForm = () => {
           <li className="list-form--item">
             <label htmlFor="">
               Description:
-              <input onChange={handleDescription} type="text" />
+              <input
+                onChange={handleDescription}
+                type="text"
+                id="description"
+                defaultValue={
+                  editedTask !== null
+                    ? `${editedTask.taskDescription} `
+                    : `${description}`
+                }
+              />
               {console.log(description)}
             </label>
           </li>
 
           <li className="list-form--item">
-            <label htmlFor="">
-              Done:
-              <input onChange={handleStatus} type="checkbox" name="" id="" />
-              {console.log(status)}
-            </label>
-          </li>
-
-          <li className="list-form--item">
-            <label htmlFor="">
+            <label htmlFor="priority-select">
               Priority:
               <select
                 onChange={handlePriority}
-                defaultValue={"medium"}
-                name=""
-                id=""
+                name="priority"
+                id="priority-select"
+                defaultValue={
+                  editedTask !== null
+                    ? `${editedTask.priority} `
+                    : `${priority}`
+                }
               >
                 <option value="Top">Top</option>
                 <option value="Medium">Medium</option>
@@ -111,14 +188,31 @@ export const ListForm = () => {
           <li className="list-form--item">
             <label htmlFor="">
               Due Date:
-              <input onChange={handleDueDate} type="date" name="" id="" />
+              <input
+                onChange={handleDueDate}
+                type="date"
+                name=""
+                id="dueDate"
+                defaultValue={
+                  editedTask !== null
+                    ? `${parseDate(editedTask.dueDate)} `
+                    : `${dueDate}`
+                }
+              />
               {console.log(dueDate)}
             </label>
           </li>
 
           <li className="list-form--item">
             <label htmlFor="">Select a tag:</label>
-            <select onChange={handleTag} name="" id="">
+            <select
+              onChange={handleTag}
+              name=""
+              id="tag"
+              defaultValue={
+                editedTask !== null ? `${editedTask.tag} ` : `${tag}`
+              }
+            >
               <option value="Work">Work</option>
               <option value="School">School</option>
               <option value="Home">Home</option>
@@ -128,14 +222,27 @@ export const ListForm = () => {
             </select>
           </li>
 
-          <li className="list-form--item">
-            <button onClick={handleNewData} type="button">
-              Add to the list
-            </button>
-          </li>
+          {editedTask !== null ? (
+            <li className="list-form--item">
+              <button onClick={() => handleUpdate(editedTask.id)} type="button">
+                Update item
+              </button>
+            </li>
+          ) : (
+            <li className="list-form--item">
+              <button onClick={handleNewData} type="button">
+                Add to the list
+              </button>
+            </li>
+          )}
         </ul>
       </form>
       <div className="list-form--hint">{hint}</div>
+      <List
+        onEdit={handleEdit}
+        onChangeStatus={handleDone}
+        onReopen={handleReopen}
+      />
     </div>
   );
 };
