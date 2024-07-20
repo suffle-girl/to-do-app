@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./style.css";
 
-export const List = ({ onEdit, onChangeStatus, onReopen }) => {
+export const List = ({ onEdit, onDone, onReopen }) => {
   const [tasks, setTasks] = useState([]);
 
   const apiEndpoint =
@@ -23,13 +23,6 @@ export const List = ({ onEdit, onChangeStatus, onReopen }) => {
     });
     window.location.reload();
   };
-
-  //   const handleReopen = async (id) => {
-  //     await fetch(`${apiEndpoint}/${id}`, {
-  //         method: "DELETE",
-  //       });
-  //       window.location.reload();
-  //   }
 
   return (
     <div className="container--list">
@@ -57,12 +50,8 @@ export const List = ({ onEdit, onChangeStatus, onReopen }) => {
             {task.done ? (
               <button onClick={() => onReopen(task.id)}>✅</button>
             ) : (
-              <input onClick={() => onChangeStatus(task.id)} type="checkbox" />
+              <input onClick={() => onDone(task.id)} type="checkbox" />
             )}
-
-            {/* {task.done ? (
-              <button onClick={() => onChangeStatus(task.id)}>Reopen</button>
-            ) : null} */}
           </div>
         );
       })}

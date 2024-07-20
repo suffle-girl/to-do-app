@@ -75,7 +75,7 @@ export const ListForm = () => {
       return;
     }
 
-    const response = await fetch(
+    await fetch(
       "https://669a16149ba098ed61fe4298.mockapi.io/todo/api/v1/tasks",
       {
         method: "POST",
@@ -99,14 +99,6 @@ export const ListForm = () => {
     const response = await fetch(`${apiEndpoint}/${id}`);
     const data = await response.json();
     setEditedTask(data);
-  };
-
-  const parseDate = (date) => {
-    const year = date.slice(0, 4);
-    const month = date.slice(5, 7);
-    const day = date.slice(8, 10);
-
-    return `${year}-${month}-${day}`;
   };
 
   const handleUpdate = async (id) => {
@@ -193,11 +185,11 @@ export const ListForm = () => {
                 type="date"
                 name=""
                 id="dueDate"
-                defaultValue={
-                  editedTask !== null
-                    ? `${parseDate(editedTask.dueDate)} `
-                    : `${dueDate}`
-                }
+                // defaultValue={
+                //   editedTask !== null
+                //     ? `${parseDate(editedTask.dueDate)} `
+                //     : `${dueDate}`
+                // }
               />
               {console.log(dueDate)}
             </label>
@@ -209,9 +201,9 @@ export const ListForm = () => {
               onChange={handleTag}
               name=""
               id="tag"
-              defaultValue={
-                editedTask !== null ? `${editedTask.tag} ` : `${tag}`
-              }
+              // defaultValue={
+              //   editedTask !== null ? `${editedTask.tag} ` : `${tag}`
+              // }
             >
               <option value="Work">Work</option>
               <option value="School">School</option>
@@ -238,11 +230,7 @@ export const ListForm = () => {
         </ul>
       </form>
       <div className="list-form--hint">{hint}</div>
-      <List
-        onEdit={handleEdit}
-        onChangeStatus={handleDone}
-        onReopen={handleReopen}
-      />
+      <List onEdit={handleEdit} onDone={handleDone} onReopen={handleReopen} />
     </div>
   );
 };
