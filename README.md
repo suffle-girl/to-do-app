@@ -15,11 +15,11 @@ The app has a dark / light mode toggle switch with the data saved to the local s
 
 To install and start the project, please:\
 \
-**1. Clone the project from the GitHub Repository**
+**1. Clone the project from the GitHub Repository**\
 Fork the project into your respository and clone it into your computer
 
 - https://github.com/suffle-girl/to-do-app \
-  VSCode terminal -> git clone {link to the cloned repository}
+  Open VSCode terminal in the desired folder -> git clone {link to the forked repository}
 
 **2. Install all dependencies**
 VSCode terminal -> npm install
