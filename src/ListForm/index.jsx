@@ -40,8 +40,6 @@ export const ListForm = () => {
   const handleReopen = async (id) => {
     setStatus(false);
 
-    console.log(status);
-
     await fetch(`${apiEndpoint}/${id}`, {
       method: "PUT",
       headers: {
@@ -103,7 +101,7 @@ export const ListForm = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     setHint(
-      "Please, make sure to make changes to the task name and task description field."
+      "Please, make sure to make changes to the task name and task description field, otherwise the data will be lost due to the API limitations."
     );
   };
 
@@ -132,7 +130,6 @@ export const ListForm = () => {
           <li className="list-form--item">
             <label htmlFor="taskName" className="list-form--item__label">
               Task name:
-              {console.log(taskName)}
             </label>
             <input
               onChange={handleTaskName}
@@ -148,7 +145,6 @@ export const ListForm = () => {
           <li className="list-form--item">
             <label htmlFor="description" className="list-form--item__label">
               Description:
-              {console.log(description)}
             </label>
             <input
               onChange={handleDescription}
@@ -179,13 +175,11 @@ export const ListForm = () => {
               <option value="Medium">Medium</option>
               <option value="Low">Low</option>
             </select>
-            {console.log(priority)}
           </li>
 
           <li className="list-form--item">
             <label htmlFor="dueDate" className="list-form--item__label">
               Due Date:
-              {console.log(dueDate)}
             </label>
             <input
               onChange={handleDueDate}
@@ -205,7 +199,6 @@ export const ListForm = () => {
               <option value="Home">Home</option>
               <option value="Self-care">Self-care</option>
               <option value="Sport">Sport</option>
-              {console.log(tag)}
             </select>
           </li>
 

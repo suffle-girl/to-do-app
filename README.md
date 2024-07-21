@@ -49,7 +49,7 @@ When editing the existing task, existing data for priority, due date and tag can
 
 **#2 No changes made to the task name and description when editing send out an empty input field**
 
-When editing an existing task, if user won't make any changes to the task name or task description, the form sends out an empty input value to the API, instead of the already existing data.
+When editing an existing task, if user won't make any changes to the task name or task description, the form sends out via the PUT method an empty input value to the API, instead of the already existing data. Using the PATCH method might solve this problem, but the mockAPI won't allow me to use it.
 
 **#3 The responsive design isn't ideal for the biggest of the PC screens**
 
