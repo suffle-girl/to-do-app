@@ -55,7 +55,7 @@
 }
 
 .list--content__task--item--button {
-  background-color: grey;
+  background-color: var(--buttons);
   color: var(--background-primary);
   border: 0.5px solid var(--background-primary);
   border-radius: 4px;
