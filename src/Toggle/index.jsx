@@ -1,6 +1,21 @@
+import { useEffect, useState } from "react";
 import "./style.css";
 
 export const Toggle = () => {
+  useEffect(() => {
+    const currentTheme = localStorage.getItem("theme");
+    console.log(currentTheme);
+    document.documentElement.setAttribute("data-theme", currentTheme);
+
+    const checked = document.querySelector(
+      '.theme-switch input[type="checkbox"]'
+    );
+
+    if (currentTheme === "dark") {
+      checked.checked = true;
+    }
+  }, []);
+
   const switchTheme = (event) => {
     if (event.target.checked) {
       document.documentElement.setAttribute("data-theme", "dark");
