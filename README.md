@@ -53,4 +53,4 @@ When editing an existing task, if user won't make any changes to the task name o
 
 **#3 The responsive design isn't ideal for the biggest of the PC screens**
 
-Though I tested the design for different sizes of screens, when open on the bigger screens (more than 2150px), it still might need some adjustments.
+Though I tested the design for different sizes of screens, when open on the bigger screens (more than 2150px), it still might need some adjustments. Although we can assume such an app would be primarily used on mobile and tablet devices, given the nature of to do lists in general.
