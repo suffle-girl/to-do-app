@@ -50,3 +50,7 @@ When editing the existing task, existing data for priority, due date and tag can
 **#2 No changes made to the task name and description when editing send out an empty input field**
 
 When editing an existing task, if user won't make any changes to the task name or task description, the form sends out an empty input value to the API, instead of the already existing data.
+
+**#3 The responsive design isn't ideal for the biggest of the PC screens**
+
+Though I tested the design for different sizes of screens, when open on the bigger screens (more than 2150px), it still might need some adjustments.
