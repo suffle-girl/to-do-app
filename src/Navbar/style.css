@@ -1,9 +1,13 @@
 .container--navbar {
   display: flex;
-  width: 85vw;
+  flex-direction: column-reverse;
+  width: 100%;
   justify-content: space-around;
+  align-items: center;
   margin: 0 auto;
-  padding: 3rem 0 1rem;
+
+  padding: 40px 15px;
+  background-color: var(--background-secondary);
 }
 
 .navbar--text {
@@ -14,25 +18,39 @@
 .navbar--text__title {
   padding: 0 5px;
   font-size: 1.7rem;
+  color: var(--text);
 }
 
 .navbar--text__subtitle {
   margin: 20px;
   font-style: italic;
+  color: var(--text-secondary);
 }
 
 .navbar--logo {
   width: 10rem;
-  /* height: 10rem; */
-  background-image: url(./img/task.svg);
+  height: 10rem;
+  background-image: url(./img/icon1.png);
   background-repeat: round;
   background-size: contain;
+  border-radius: 15px;
+  margin: 20px 0;
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (min-width: 380px) {
+  .container--navbar {
+    flex-direction: row;
+    padding: 80px 15px;
+  }
+
   .navbar--logo {
     background-repeat: no-repeat;
     background-position: center;
+    margin: 0;
+  }
+
+  .navbar--text {
+    width: 50%;
   }
 
   .navbar--text__title {

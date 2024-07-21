@@ -1,17 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
+:root {
+  --background-primary: #ffdbc2;
+  --background-secondary: #fabdb2;
+  --text: #95b29f;
+  --text-secondary: #132221;
+}
+
+:root[data-theme="dark"] {
+  --background-primary: #95b29f;
+  --background-secondary: #fabdb2;
+  --text: #ffdbc2;
+}
+
 * {
   box-sizing: border-box;
 }
 
 html {
   font-family: "Open Sans", sans-serif;
+  background-color: var(--background-primary);
 }
 
-.container {
-  max-width: 26rem;
-  margin-right: auto;
-  margin-left: auto;
+body {
+  margin: 0;
 }
 
 @media screen and (min-width: 320px) {
