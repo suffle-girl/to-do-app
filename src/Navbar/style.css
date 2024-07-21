@@ -5,7 +5,6 @@
   justify-content: space-around;
   align-items: center;
   margin: 0 auto;
-
   padding: 40px 15px;
   background-color: var(--background-secondary);
 }
@@ -30,7 +29,7 @@
 .navbar--logo {
   width: 10rem;
   height: 10rem;
-  background-image: url(./img/icon1.png);
+  background-image: var(--logo);
   background-repeat: round;
   background-size: contain;
   border-radius: 15px;
@@ -39,7 +38,6 @@
 
 @media screen and (min-width: 380px) {
   .container--navbar {
-    flex-direction: row;
     padding: 80px 15px;
   }
 
@@ -59,7 +57,10 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 650px) {
+  .container--navbar {
+    flex-direction: row;
+  }
 }
 
 @media screen and (min-width: 1200px) {

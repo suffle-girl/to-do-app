@@ -1,8 +1,10 @@
+import { Toggle } from "../Toggle";
 import "./style.css";
 
 export const Navbar = () => {
   return (
     <div className="container--navbar">
+      <Toggle />
       <div className="navbar--text">
         <h1 className="navbar--text__title">To Do App</h1>
         <h3 className="navbar--text__subtitle">Welcome to the To Do App!</h3>
