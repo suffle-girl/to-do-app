@@ -8,6 +8,7 @@ span {
   margin-right: 0.5rem;
   font-size: 0.9rem;
   font-style: italic;
+  color: #0d324d;
 }
 .theme-switch {
   display: inline-block;

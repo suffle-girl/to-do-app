@@ -4,7 +4,6 @@ import "./style.css";
 export const Toggle = () => {
   useEffect(() => {
     const currentTheme = localStorage.getItem("theme");
-    console.log(currentTheme);
     document.documentElement.setAttribute("data-theme", currentTheme);
 
     const checked = document.querySelector(
