@@ -26,7 +26,7 @@ export const List = ({ onEdit, onDone, onReopen }) => {
 
   return (
     <div className="container--list">
-      <h2 className="list--title">Here is a list of your tasks:</h2>
+      <h2 className="list--title">What's on your plate:</h2>
       <div className="list--content__container">
         {tasks.map((task) => {
           return (
