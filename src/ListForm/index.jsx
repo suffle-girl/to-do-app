@@ -99,6 +99,12 @@ export const ListForm = () => {
     const response = await fetch(`${apiEndpoint}/${id}`);
     const data = await response.json();
     setEditedTask(data);
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    setHint(
+      "Please, make sure to make changes to the task name and task description field."
+    );
   };
 
   const handleUpdate = async (id) => {
