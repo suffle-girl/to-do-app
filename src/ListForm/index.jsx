@@ -124,7 +124,7 @@ export const ListForm = () => {
       <form className="list-form" action="">
         <ul className="list-form--wrapper">
           <li className="list-form--item">
-            <label htmlFor="taskName">
+            <label htmlFor="taskName" className="list-form--item__label">
               Task name:
               {console.log(taskName)}
             </label>
@@ -140,7 +140,7 @@ export const ListForm = () => {
           </li>
 
           <li className="list-form--item">
-            <label htmlFor="description">
+            <label htmlFor="description" className="list-form--item__label">
               Description:
               {console.log(description)}
             </label>
@@ -158,7 +158,9 @@ export const ListForm = () => {
           </li>
 
           <li className="list-form--item">
-            <label htmlFor="prioritySelect">Priority:</label>
+            <label htmlFor="prioritySelect" className="list-form--item__label">
+              Priority:
+            </label>
             <select
               onChange={handlePriority}
               name="prioritySelect"
@@ -175,7 +177,7 @@ export const ListForm = () => {
           </li>
 
           <li className="list-form--item">
-            <label htmlFor="dueDate">
+            <label htmlFor="dueDate" className="list-form--item__label">
               Due Date:
               {console.log(dueDate)}
             </label>
@@ -193,7 +195,9 @@ export const ListForm = () => {
           </li>
 
           <li className="list-form--item">
-            <label htmlFor="tag">Select a tag:</label>
+            <label htmlFor="tag" className="list-form--item__label">
+              Select a tag:
+            </label>
             <select
               onChange={handleTag}
               name="tag"
@@ -233,8 +237,9 @@ export const ListForm = () => {
             </li>
           )}
         </ul>
+        <div className="list-form--hint">{hint}</div>
       </form>
-      <div className="list-form--hint">{hint}</div>
+
       <List onEdit={handleEdit} onDone={handleDone} onReopen={handleReopen} />
     </div>
   );

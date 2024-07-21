@@ -4,13 +4,14 @@
   --background-primary: #ffdbc2;
   --background-secondary: #fabdb2;
   --text: #95b29f;
-  --text-secondary: #132221;
+  --text-secondary: #0b3c49;
 }
 
 :root[data-theme="dark"] {
-  --background-primary: #95b29f;
-  --background-secondary: #fabdb2;
+  --background-primary: #0b3c49;
+  --background-secondary: #95b29f;
   --text: #ffdbc2;
+  --text-secondary: #fabdb2;
 }
 
 * {
