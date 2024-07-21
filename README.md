@@ -3,7 +3,7 @@
 This To Do App was created as a study case for GymBeam recruitment process for a Junior React Developer position.
 
 In the app, user can add, edit and remove their tasks, mark them as completed and reopen them to get back to working on the tasks.
-The app uses a mockAPI API which can be found here:\
+The app uses a mockAPI API which can be found here:
 
 - https://669a16149ba098ed61fe4298.mockapi.io/todo/api/v1/tasks
 
@@ -31,10 +31,11 @@ VSCode terminal -> npm run dev
 
 Alternatively, you can also find the App on Netlify:
 
-- https://github.com/Czechitas-podklady-WEB/ukol-piskvorky-1/
+- https://thetodoappapp.netlify.app/
 
 # Known Issues
 
-Due to the limited time for working on the project, there has been a few issues I didn't manage to figure out yet
-**#1 Issue**
+Due to the limited time for working on the project, there has been a few issues I didn't manage to figure out yet\
+\
+**#1 Issue**\
 Descripion
