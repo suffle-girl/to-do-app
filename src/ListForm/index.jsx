@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { List } from "../List";
 import "./style.css";
 
@@ -186,11 +186,6 @@ export const ListForm = () => {
               type="date"
               name="dueDate"
               id="dueDate"
-              // defaultValue={
-              //   editedTask !== null
-              //     ? `${parseDate(editedTask.dueDate)} `
-              //     : `${dueDate}`
-              // }
             />
           </li>
 
@@ -198,14 +193,7 @@ export const ListForm = () => {
             <label htmlFor="tag" className="list-form--item__label">
               Select a tag:
             </label>
-            <select
-              onChange={handleTag}
-              name="tag"
-              id="tag"
-              // defaultValue={
-              //   editedTask !== null ? `${editedTask.tag} ` : `${tag}`
-              // }
-            >
+            <select onChange={handleTag} name="tag" id="tag">
               <option value="Work">Work</option>
               <option value="School">School</option>
               <option value="Home">Home</option>
@@ -239,7 +227,6 @@ export const ListForm = () => {
         </ul>
         <div className="list-form--hint">{hint}</div>
       </form>
-
       <List onEdit={handleEdit} onDone={handleDone} onReopen={handleReopen} />
     </div>
   );
